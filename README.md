@@ -79,6 +79,43 @@ that:
  */
 ```
 
+### Helpers
+
+There are also some helpers (`fa_icon` and `fa_stacked_icon`) that make your
+views _icontastic!_.
+
+```ruby
+fa_icon "camera-retro"
+# => <i class="icon-camera-retro"></i>
+
+fa_icon "camera-retro", text: "Take a photo"
+# => <i class="icon-camera-retro"></i> Take a photo
+
+fa_icon "quote-left 4x muted", class: "pull-left"
+# => <i class="icon-quote-left icon-4x icon-muted pull-left"></i>
+
+content_tag(:li, fa_icon("ok li", text: "Bulleted list item"))
+# => <li><i class="icon-ok icon-li"></i> Bulleted list item</li>
+```
+
+```ruby
+fa_stacked_icon "twitter", base: "check-empty"
+# => <span class="icon-stack">
+# =>   <i class="icon-check-empty icon-stack-base"></i>
+# =>   <i class="icon-twitter"></i>
+# => </span>
+
+fa_stacked_icon "terminal light", base: "sign-blank", class: "pull-right", text: "Hi!"
+# => <span class="icon-stack pull-right">
+# =>   <i class="icon-sign-blank icon-stack-base"></i>
+# =>   <i class="icon-terminal icon-light"></i>
+# => </span> Hi!
+
+```
+
+**Note:** In Rails 3.2, make sure font-awesome-rails is outside the bundler asset group
+so that these helpers are automatically loaded in production environments.
+
 ## Changes
 
     | Version | FontAwesome SHA1 | Notes / Other additions                                                   |
@@ -100,6 +137,7 @@ that:
     | 3.2.1.0 | b1a8ad4          | 3.2.1 release (stylesheet fixes)                                          |
     | 3.2.1.1 | b1a8ad4          | renamed Font::Awesome module to FontAwesome to avoid Font name conflicts  |
     | 3.2.1.2 | b1a8ad4          | fixed suffix on svg font url during asset precompilation                  |
+    | 3.2.1.3 | b1a8ad4          | added `fa_icon` and `fa_stacked_icon` view helpers                        |
 
 **note on version 0.2.0**: FontAwesome now includes scss and sass files, but
 when I used them instead of the plain ol css file included in the project, it
